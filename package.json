@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "An immutable data structure for managing n-ary tree based data for User interfaces",
   "main": "lib/index.js",
-  "jsnext:main": "es/index",
+  "jsnext:main": "es/index.js",
   "scripts": {
     "lint": "eslint src",
     "test": "mocha src/**/*.spec.js"
