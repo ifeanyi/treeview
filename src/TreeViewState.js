@@ -168,6 +168,20 @@ export class TreeViewState {
       yield * this.children(node.id);
     }
   }
+
+  _set(nodeId, newProps = {}) {
+    let node = this.get(nodeId);
+
+    if(node) {
+      this._nodes[nodeId] = assign({}, node, newProps);
+    }
+
+    return this;
+  }
+
+  set(nodeId, props = {}) {
+    return this.clone()._set(nodeId, props);
+  }
 }
 
 

@@ -17,7 +17,7 @@ describe('TreeViewState', function() {
     const tvs = TreeViewState.createFromData(simpleTreeData);
     const tvs2 = tvs.clone();
 
-    assert.ok(tvs !== tvs2);
+    assert.notEqual(tvs, tvs2);
     assert.strictEqual(tvs.size, tvs2.size);
     assert.deepStrictEqual(tvs.root, tvs2.root);
   });
@@ -115,5 +115,24 @@ describe('TreeViewState: Iteration', function() {
     const result = [ ...tvs ].map(node => node.id);
 
     assert.deepStrictEqual(result, simpleTreeDataOrder);
+  });
+});
+
+describe('TreeViewState: Mutation', function() {
+  let tvs;
+
+  before('Initialize it', function() {
+    tvs = TreeViewState.createFromData(simpleTreeData);
+  });
+
+  it('Set', function() {
+    const nextTvs = tvs.set('n0', { expanded: true });
+    const n0 = tvs.get('n0');
+    const nextTvsN0 = nextTvs.get('n0');
+
+    assert.notEqual(tvs, nextTvs);
+    assert.notEqual(n0, nextTvsN0);
+    assert.strictEqual(n0.expanded, false);
+    assert.strictEqual(nextTvsN0.expanded, true);
   });
 });
