@@ -120,7 +120,7 @@ export class TreeViewState {
   }
 
   /* traverse city */
-  * traverseUp(ref) {
+  * parents(ref) {
     let node;
 
     if (ref instanceof Node) {

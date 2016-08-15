@@ -68,21 +68,17 @@ describe('TreeViewState: Iteration', function() {
     tvs = TreeViewState.createFromData(simpleTreeData);
   });
 
-  it('Is iterable', function() {
-
-  });
-
   it('traverseUp including ref', function() {
     let ancestryIndex = 0;
 
-    for(let { id } of tvs.traverseUp('n0111')) {
+    for(let { id } of tvs.parents('n0111')) {
       assert.strictEqual(id, n0111Ancestry[ancestryIndex++]);
     }
   });
 
   it('traverseUp excluding ref', function() {
     const n0111 = tvs.get('n0111');
-    const result = [ ...tvs.traverseUp(n0111) ].map(node => node.id);
+    const result = [ ...tvs.parents(n0111) ].map(node => node.id);
 
     assert.deepStrictEqual(n0111Ancestry.slice(1), result);
   });
