@@ -32,6 +32,7 @@ describe('Node', function() {
 
     assert(state !== nextState);
     assert(nextState instanceof Node);
+    assert(nextState.expanded, true);
     assert.notDeepStrictEqual(state, nextState);
   });
 });

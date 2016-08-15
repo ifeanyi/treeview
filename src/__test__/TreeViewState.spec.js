@@ -151,10 +151,9 @@ describe('TreeViewState: Mutation', function() {
 
     it('immutable', function() {
       assert(tvs !== next);
-      assert.notDeepStrictEqual(n011, nextN011);
     });
 
-    it.skip('pure', function() {
+    it('pure', function() {
       assert.deepStrictEqual(n011, nextN011);
     });
   });

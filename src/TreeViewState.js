@@ -173,7 +173,7 @@ export class TreeViewState {
     let node = this.get(nodeId);
 
     if(node) {
-      this._nodes[nodeId] = assign({}, node, props);
+      this._nodes[nodeId] = node.set(props);
     }
 
     return this;

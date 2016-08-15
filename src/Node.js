@@ -36,7 +36,7 @@ class Node {
     const next = this.clone();
 
     for (let key of Object.keys(props)) {
-      this[key] = props[key];
+      next[key] = props[key];
     }
 
     return next;
