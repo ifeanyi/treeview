@@ -62,13 +62,13 @@ describe('TreeViewState: Accounting', function() {
 
 describe('TreeViewState: Iteration', function() {
   let tvs;
-  const n0111Ancestry = [ 'n0111', 'n011', 'n01', 'n0' ];
+  const n0111Ancestry = [ 'n011', 'n01', 'n0' ];
 
   before('Initialize it', function() {
     tvs = TreeViewState.createFromData(simpleTreeData);
   });
 
-  it('traverseUp including ref', function() {
+  it('Gets parents with node id', function() {
     let ancestryIndex = 0;
 
     for(let { id } of tvs.parents('n0111')) {
@@ -76,11 +76,11 @@ describe('TreeViewState: Iteration', function() {
     }
   });
 
-  it('traverseUp excluding ref', function() {
+  it('Gets parents with node reference', function() {
     const n0111 = tvs.get('n0111');
     const result = [ ...tvs.parents(n0111) ].map(node => node.id);
 
-    assert.deepStrictEqual(n0111Ancestry.slice(1), result);
+    assert.deepStrictEqual(n0111Ancestry, result);
   });
 
   it('Children: n01', function() {

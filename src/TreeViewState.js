@@ -124,14 +124,16 @@ export class TreeViewState {
     let node;
 
     if (ref instanceof Node) {
-      node = this.get(ref.parentId);
+      node = ref;
     } else {
       node = this.get(ref);
     }
 
     while(node) {
-      yield node;
       node = this.get(node.parentId);
+      if(node) {
+        yield node;
+      }
     }
   }
 
