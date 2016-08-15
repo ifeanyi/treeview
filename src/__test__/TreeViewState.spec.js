@@ -5,7 +5,21 @@ import { simpleTreeData, simpleTreeDataOrder } from './fixtures';
 describe('TreeViewState', function() {
   it('Initializes', function() {
     const tvs = new TreeViewState();
-    assert(tvs);
+    assert.ok(tvs);
+  });
+
+  it('Initializes from data', function() {
+    const tvs = TreeViewState.createFromData(simpleTreeData);
+    assert.ok(tvs);
+  });
+
+  it('Clones', function() {
+    const tvs = TreeViewState.createFromData(simpleTreeData);
+    const tvs2 = tvs.clone();
+
+    assert.ok(tvs !== tvs2);
+    assert.strictEqual(tvs.size, tvs2.size);
+    assert.deepStrictEqual(tvs.root, tvs2.root);
   });
 });
 
