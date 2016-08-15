@@ -1,6 +1,6 @@
 import TreeViewState from '../TreeViewState';
 import assert from 'power-assert';
-import { simpleTreeData } from './fixtures';
+import { simpleTreeData, simpleTreeDataOrder } from './fixtures';
 
 describe('TreeViewState', function() {
   it('Initializes', function() {
@@ -87,4 +87,17 @@ describe('TreeViewState: Iteration', function() {
     assert.deepStrictEqual(n0111Ancestry.slice(1), result);
   });
 
+  it('Children: n01', function() {
+    const result = [ ...tvs.children('n01') ].map(node => node.id);
+
+    assert.deepStrictEqual(simpleTreeDataOrder.slice(-5), result);
+  });
+
+  it('Children: n00, n01', function() {
+    const ids = [ 'n00', 'n01' ];
+    const result = [ ...tvs.children(...ids) ].map(node => node.id);
+    const expected = [ 'n000', 'n0000', 'n010', 'n011', 'n0110', 'n0111', 'n012' ];
+
+    assert.deepStrictEqual(expected, result);
+  });
 });

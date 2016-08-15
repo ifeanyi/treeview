@@ -135,9 +135,41 @@ export class TreeViewState {
     }
   }
 
-  * traverseDown(nodeId) {
-    let node;
+  * children(...nodeIds) {
+    const startNodes = nodeIds.map(id => this.get(id)).filter(node => !!node);
+    const discovered = new Set();
+
+    for (let startNode of startNodes) {
+      const stack = [...startNode.childIds];
+
+      while(stack.length) {
+        const id =  stack.shift();
+
+        if(discovered.has(id)) {
+          continue;
+        } else {
+          discovered.add(id);
+        }
+
+        const node = this.get(id);
+        if (node) {
+          yield node;
+          Array.prototype.unshift.apply(stack, node.childIds);
+        }
+      }
+    }
+    // for (let id of nodeIds) {
+    //   const node = this.get(id);
+    //
+    //   if(node) {
+    //     yield node;
+    //     for (let id of node.childIds) {
+    //       yield * this.children(id);
+    //     }
+    //   }
+    // }
   }
 }
+
 
 export default TreeViewState;

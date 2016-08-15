@@ -1,1 +1,1 @@
-export { simpleTreeData } from './simpleTreeData';
+export { simpleTreeData, simpleTreeDataOrder } from './simpleTreeData';

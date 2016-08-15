@@ -55,4 +55,15 @@ export const simpleTreeData = {
   ]
 };
 
-export default simpleTreeData;
+export const simpleTreeDataOrder = [
+  'n0',
+  'n00',
+  'n000',
+  'n0000',
+  'n01',
+  'n010',
+  'n011',
+  'n0110',
+  'n0111',
+  'n012'
+];
