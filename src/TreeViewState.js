@@ -169,11 +169,11 @@ export class TreeViewState {
     }
   }
 
-  _set(nodeId, newProps = {}) {
+  _set(nodeId, props = {}) {
     let node = this.get(nodeId);
 
     if(node) {
-      this._nodes[nodeId] = assign({}, node, newProps);
+      this._nodes[nodeId] = assign({}, node, props);
     }
 
     return this;
@@ -185,6 +185,23 @@ export class TreeViewState {
 
   touch(nodeId) {
     return this.set(nodeId);
+  }
+
+  update(nodeId, props) {
+    let node = this.get(nodeId);
+
+    if(!node) {
+      return this;
+    }
+
+    return this.withMutations(state => {
+      state.set(nodeId, props);
+      if (node.parentId) {
+        for (let { id } of state.parents(nodeId)) {
+          state.touch(id);
+        }
+      }
+    });
   }
 }
 
