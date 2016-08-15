@@ -98,6 +98,12 @@ describe('TreeViewState: Iteration', function() {
     const result = [ ...tvs.children(...ids) ].map(node => node.id);
     const expected = [ 'n000', 'n0000', 'n010', 'n011', 'n0110', 'n0111', 'n012' ];
 
-    assert.deepStrictEqual(expected, result);
+    assert.deepStrictEqual(result, expected);
+  });
+
+  it('Iterable', function() {
+    const result = [ ...tvs ].map(node => node.id);
+
+    assert.deepStrictEqual(result, simpleTreeDataOrder);
   });
 });

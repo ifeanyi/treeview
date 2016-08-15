@@ -158,16 +158,13 @@ export class TreeViewState {
         }
       }
     }
-    // for (let id of nodeIds) {
-    //   const node = this.get(id);
-    //
-    //   if(node) {
-    //     yield node;
-    //     for (let id of node.childIds) {
-    //       yield * this.children(id);
-    //     }
-    //   }
-    // }
+  }
+
+  * [Symbol.iterator]() {
+    for (let node of this.root) {
+      yield node;
+      yield * this.children(node.id);
+    }
   }
 }
 
