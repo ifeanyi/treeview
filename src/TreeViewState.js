@@ -182,6 +182,10 @@ export class TreeViewState {
   set(nodeId, props = {}) {
     return this.clone()._set(nodeId, props);
   }
+
+  touch(nodeId) {
+    return this.set(nodeId);
+  }
 }
 
 

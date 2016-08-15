@@ -119,20 +119,45 @@ describe('TreeViewState: Iteration', function() {
 });
 
 describe('TreeViewState: Mutation', function() {
-  let tvs;
+  // let tvs;
+  //
+  // before('Initialize it', function() {
+  //   tvs = TreeViewState.createFromData(simpleTreeData);
+  // });
 
-  before('Initialize it', function() {
-    tvs = TreeViewState.createFromData(simpleTreeData);
+  describe('set', function() {
+    const tvs = TreeViewState.createFromData(simpleTreeData);
+    const next = tvs.set('n0', { expanded: true });
+    const n0 = tvs.get('n0');
+    const nextN0 = next.get('n0');
+
+    it('immutable', function() {
+      assert.notEqual(tvs, next);
+      assert.notEqual(n0, nextN0);
+    });
+
+    it('actually sets', function() {
+      assert.strictEqual(nextN0.expanded, true);
+    });
+
+    it('pure', function() {
+      assert.notDeepEqual(nextN0, n0);
+    });
   });
 
-  it('Set', function() {
-    const nextTvs = tvs.set('n0', { expanded: true });
-    const n0 = tvs.get('n0');
-    const nextTvsN0 = nextTvs.get('n0');
+  describe('touch', function() {
+    const tvs = TreeViewState.createFromData(simpleTreeData);
+    const next = tvs.touch('n011');
+    const n011 = tvs.get('n011');
+    const nextN011 = next.get('n011');
 
-    assert.notEqual(tvs, nextTvs);
-    assert.notEqual(n0, nextTvsN0);
-    assert.strictEqual(n0.expanded, false);
-    assert.strictEqual(nextTvsN0.expanded, true);
+    it('immutable', function() {
+      assert.notEqual(tvs, next);
+      assert.notEqual(n011, nextN011);
+    });
+
+    it('pure', function() {
+      assert.deepEqual(n011, nextN011);
+    });
   });
 });
