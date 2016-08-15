@@ -15,6 +15,33 @@ class Node {
     this.data = data;
   }
 
+  clone() {
+    const next = new this.constructor();
+
+    next.id = this.id;
+    next.text = this.text;
+    next.checkedState = this.checkedState;
+    next.expanded = this.expanded;
+    next.parentId = this.parentId;
+    next.childIds = this.childIds.slice();
+    next.path = this.path;
+    next.depth = this.depth;
+    next.index = this.index;
+    next.data = this.data;
+
+    return next;
+  }
+
+  set(props) {
+    const next = this.clone();
+
+    for (let prop of Object.keys(props)) {
+      this[prop] = props[prop];
+    }
+
+    return next;
+  }
+
   static createFromData(data, mapper) {
     const node = mapper ? new Node(mapper(data)) : new Node(data);
 

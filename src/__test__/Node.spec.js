@@ -1,6 +1,15 @@
 import Node from '../Node';
 import assert from 'power-assert';
-import assign from 'lodash.assign';
+
+const data = {
+  id: 'n0',
+  text: 'n0',
+  showCheckbox: false,
+  children: [],
+  data: {
+    resourceId: '2322323'
+  }
+};
 
 describe('Node', function() {
   it('Initializes', function() {
@@ -8,16 +17,21 @@ describe('Node', function() {
     assert(node);
   });
 
-  it('It clones', function() {
-    const node = new Node();
-    node.id = '1';
+  it('Really clones', function() {
+    const state = new Node(data);
+    const nextState = state.clone();
 
-    const node2 = assign({}, node);
-    assert.equal(node2.id, node.id);
+    assert(state !== nextState);
+    assert(nextState instanceof Node);
+    assert.deepStrictEqual(state, nextState);
+  });
 
-    assert.equal(
-      Object.keys(node).join('_'),
-      Object.keys(node2).join('_')
-    );
+  it('Set is Immutable', function() {
+    const state = new Node(data);
+    const nextState = state.set({ expanded: true });
+
+    assert(state !== nextState);
+    assert(nextState instanceof Node);
+    assert.notDeepStrictEqual(state, nextState);
   });
 });
