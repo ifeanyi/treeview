@@ -1,5 +1,5 @@
 {
-  "name": "tree-view-state",
+  "name": "treeview-state",
   "version": "1.0.0",
   "description": "An immutable data structure for managing n-ary tree based data for User interfaces",
   "main": "lib/index.js",
@@ -40,9 +40,9 @@
     "sourceMap": false,
     "instrument": false,
     "check-coverage": true,
-    "lines": 95,
-    "statements": 95,
-    "functions": 95,
-    "branches": 95
+    "lines": 90,
+    "statements": 90,
+    "functions": 90,
+    "branches": 90
   }
 }
