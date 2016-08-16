@@ -1,5 +1,4 @@
 import TreeViewState from '../TreeViewState';
-import Node from '../Node';
 import assert from 'power-assert';
 import { simpleTreeData, simpleTreeDataOrder } from './fixtures';
 import { spy } from 'sinon';

@@ -92,9 +92,8 @@ export class TreeViewState {
     this._count += added;
   }
 
-  _remove(nodeId) {
-
-  }
+  // _remove(nodeId) {
+  // }
 
   asMutable() {
     this._mutableState = MutableStates.mutable;
@@ -203,6 +202,8 @@ export class TreeViewState {
       }
     });
   }
+
+
 }
 
 
