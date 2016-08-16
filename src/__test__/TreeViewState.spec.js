@@ -164,13 +164,26 @@ describe('TreeViewState: Mutation', function() {
     const nextState = state.update(id, { expanded: true });
     const n0000 = state.get(id);
     const nextN0000 = nextState.get(id);
+    const parents = [ ...state.parents(id) ];
+    const nextParents = [ ...nextState.parents(id )];
 
     it('immutable', function() {
       assert(nextState !== state);
-      assert.notDeepStrictEqual([ ...nextState.parents('n0000'), ...state.parents('n0000')]);
     });
 
-    it('clones 1x', function() {
+    it('parents are updated', function() {
+      for (let i=0; i < parents.length; ++i) {
+        assert(parents[i] !== nextParents[i]);
+        assert.deepStrictEqual(parents[i], nextParents[i]);
+      }
+    });
+
+    it('applies update', function() {
+      assert(n0000 !== nextN0000);
+      assert(nextN0000.expanded, true);
+    });
+
+    it('clones exactly 1x', function() {
       const state = createFromSimpleData();
       spy(state, 'clone');
       state.update('n0000', { expanded: true });
