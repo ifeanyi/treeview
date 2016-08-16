@@ -3,3 +3,5 @@ lib
 umd
 dist
 es
+.nyc_output
+coverage

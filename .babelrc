@@ -8,7 +8,8 @@
   ],
   "env": {
     "test": {
-      "presets": [ "power-assert" ]
+      "presets": [ "power-assert" ],
+      "plugins": [ "istanbul"]
     }
   }
 }

@@ -1,18 +1,20 @@
 {
-  "name": "node-manager",
+  "name": "tree-view-state",
   "version": "1.0.0",
   "description": "An immutable data structure for managing n-ary tree based data for User interfaces",
   "main": "lib/index.js",
   "jsnext:main": "es/index.js",
   "scripts": {
     "lint": "eslint src",
-    "test": "cross-env BABEL_ENV=test mocha src/**/*.spec.js"
+    "test": "cross-env BABEL_ENV=test nyc mocha src/**/*.spec.js",
+    "coverage": "nyc report"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.10.1",
+    "babel-plugin-istanbul": "^2.0.0",
     "babel-plugin-transform-runtime": "^6.12.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-power-assert": "^1.0.0",
@@ -21,6 +23,7 @@
     "cross-env": "^2.0.0",
     "eslint": "^3.0.1",
     "mocha": "^3.0.0",
+    "nyc": "^8.1.0",
     "power-assert": "^1.4.1",
     "sinon": "^1.17.5"
   },
@@ -29,5 +32,17 @@
     "lodash.assign": "^4.0.9",
     "lodash.isarray": "^4.0.0",
     "lodash.isempty": "^4.2.1"
+  },
+  "nyc": {
+    "include": [ "src/**/*.js"],
+    "exclude": [ "**/__test__/**"],
+    "require": [ "babel-register"],
+    "sourceMap": false,
+    "instrument": false,
+    "check-coverage": true,
+    "lines": 95,
+    "statements": 95,
+    "functions": 95,
+    "branches": 95
   }
 }
