@@ -42,6 +42,14 @@ class Node {
     return next;
   }
 
+  expand() {
+    return this.set({ expanded: true });
+  }
+
+  collapse() {
+    return this.set({ expanded: false });
+  }
+
   static createFromData(data, mapper) {
     const node = mapper ? new Node(mapper(data)) : new Node(data);
 

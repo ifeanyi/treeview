@@ -35,4 +35,33 @@ describe('Node', function() {
     assert(nextState.expanded, true);
     assert.notDeepStrictEqual(state, nextState);
   });
+
+  describe('Expand/Collapse', function() {
+    let state, nextState;
+
+    beforeEach(function() {
+      state = new Node(data);
+      nextState = state.expand();
+    });
+
+    it('Expands', function() {
+      assert.strictEqual(nextState.expanded, true);
+    });
+
+    it('Immutable', function() {
+      assert(state !== nextState);
+    });
+
+    it('Pure', function() {
+      assert.strictEqual(state.expanded, false);
+    });
+
+    it('Collapses', function() {
+      const nextNextState = nextState.collapse();
+
+      assert.strictEqual(nextNextState.expanded, false);
+      assert(nextState !== nextNextState);
+      assert.notStrictEqual(nextNextState.expanded, nextState.expanded);
+    });
+  });
 });
