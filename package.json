@@ -10,8 +10,8 @@
     "coverage": "nyc report"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Francis Ifeanyi Okonkwo",
+  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-plugin-istanbul": "^2.0.0",
