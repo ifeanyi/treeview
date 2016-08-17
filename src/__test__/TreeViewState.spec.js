@@ -121,7 +121,10 @@ describe('TreeViewState: Iteration', function() {
   });
 });
 
-describe('TreeViewState: Mutation', function() {
+describe('TreeviewState: Immutability', function() {
+});
+
+describe('TreeViewState: Updates', function() {
   describe('set', function() {
     const tvs = createFromSimpleData();
     const next = tvs.set('n0', { expanded: true });
@@ -189,6 +192,11 @@ describe('TreeViewState: Mutation', function() {
 
       assert(state.clone.calledOnce);
       state.clone.restore();
+    });
+
+    it('noop updates', function() {
+      const nextState = state.update('23232323232', { foo: 'bar' });
+      assert(state === nextState);
     });
   });
 });
