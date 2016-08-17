@@ -12,6 +12,7 @@
   "keywords": [],
   "author": "Francis Ifeanyi Okonkwo",
   "license": "MIT",
+  "repository": "ifeanyi/treeview.git",
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-plugin-istanbul": "^2.0.0",
