@@ -18,4 +18,4 @@ git:
 matrix:
   fast_finish: true
 
-script: npm run test
+script: npm run ci
