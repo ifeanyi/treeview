@@ -1,7 +1,7 @@
 {
   "name": "treeview-state",
   "version": "1.0.0",
-  "description": "An immutable data structure for managing n-ary tree based data for User interfaces",
+  "description": "An immutable data structure for managing the state of a treeview",
   "main": "lib/index.js",
   "jsnext:main": "es/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "keywords": [],
   "author": "Francis Ifeanyi Okonkwo",
   "license": "MIT",
-  "repository": "ifeanyi/treeview.git",
+  "repository": "ifeanyi/treeview-state.git",
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-plugin-istanbul": "^2.0.0",
